@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="connections_app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<div id="container" class="effect mainnav-lg">
+    {% block navbar %}{% endblock %}
+    <div class="boxed">
+        <div id="content-container">
+            {% block page_content %}{% endblock %}
+        </div>
+        {% block menu %}{% endblock %}
+    </div>
+    {% block footer %}{% endblock %}
+</div>
+{% block javascript %}{% endblock %}
+</body>
+</html>

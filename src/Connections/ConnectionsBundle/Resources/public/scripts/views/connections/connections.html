@@ -1,0 +1,61 @@
+<div class="panel-body">
+    <div class="form-group">
+        <label class="control-label">Sort By</label>
+        <div>
+            <select
+                    class="form-control user-table-filters"
+                    id="sel1"
+                    ng-change="sortUsers(userSort)"
+                    options="users"
+                    ng-model="userSort"
+                    >
+                <option value="0">do not sort</option>
+                <option value="By Followers">number of followers</option>
+                <option value="By Followings">number of followings</option>
+                <option value="By Repositories">number of repositories</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-12 table-responsive">
+        <table class="table table-striped table-bordered user-table"
+               cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Following</th>
+                <th>Followers</th>
+                <th>Repositories</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users">
+                <td>
+                    <div class="table-image col-xs-3">
+                        <img ng-src="{{ user.Image }}" alt="table-image" />
+                    </div>
+                    <div class="col-xs-9">
+                        <div>{{ user.Name }}</div>
+                        <div>{{ user.Company }}</div>
+                    </div>
+                </td>
+                <td class="user-things">{{  user.FollowersNumber > 999 ? (user.FollowersNumber/1000).toFixed(1) + 'k' : user.FollowersNumber }}</td>
+                <td class="user-things">{{  user.FollowingNumber > 999 ? (user.FollowingNumber/1000).toFixed(1) + 'k' : user.FollowingNumber }}</td>
+                <td class="user-things">{{ user.RepositoriesNumber > 999 ? (user.RepositoriesNumber/1000).toFixed(1) + 'k' : user.RepositoriesNumber }}</td>
+                <td class="user-things">
+                    <button ng-click="follow(user.UserId)" class="btn btn-success" ng-show="!user.IsFollowing">Follow</button>
+                    <button ng-click="unfollow(user.UserId)" class="btn btn-danger" ng-show="user.IsFollowing">Unfollow</button>
+                    <a href="#/profile/{{ user.UserId }}" class="btn btn-primary">Details</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <uib-pagination
+            ng-click="getUsersPerPage(currentPage)"
+            ng-model="currentPage"
+            total-items="totalRecords"
+            max-size="5"
+            boundary-links="true">
+    </uib-pagination>
+</div>

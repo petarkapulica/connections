@@ -1,0 +1,73 @@
+a, u {
+    text-decoration: none !important
+}
+
+#dropdown-user > a:hover{
+    background-color: white !important;
+}
+
+.img-user {
+    max-height: 50px;
+}
+
+.header-menu {
+    cursor: pointer;
+    height: 50px;
+}
+
+nav#mainnav-container{
+    position: absolute;
+    top: 0;
+    padding: 10px;
+}
+
+nav#mainnav-container li {
+    list-style-type: none;
+}
+
+.boxed {
+    color: #337ab7;;
+}
+
+.user-data {
+    padding: 5px 10px;
+}
+
+.user-stats{
+    font-size: 30px;
+    text-align: center;
+}
+
+.user-image > img {
+    max-height: 200px;
+    max-width: 130px;
+}
+
+.user-friends > div {
+    float: left;
+    border: 3px solid #337ab7;
+    width: 160px;
+    height: 100px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.friend-image > img {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.table-image > img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.user-table td.user-things, .user-table th{
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.user-table-filters {
+    width: 200px;
+}

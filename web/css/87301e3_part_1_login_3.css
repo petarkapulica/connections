@@ -1,0 +1,16 @@
+.account-wall {
+    position: relative;
+    padding-top: 30px;
+}
+
+.login-error{
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    color: red;
+    text-align: center;
+}
+
+.signup-form {
+    margin-top: 20px;
+}

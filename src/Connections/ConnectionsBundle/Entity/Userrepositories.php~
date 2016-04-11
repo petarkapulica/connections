@@ -1,0 +1,45 @@
+<?php
+
+namespace Connections\ConnectionsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Userrepositories
+ *
+ * @ORM\Table(name="UserRepositories", indexes={@ORM\Index(name="fk_UserRepositories_User1_idx", columns={"UserId"}), @ORM\Index(name="fk_UserRepositories_Repository1_idx", columns={"RepositoryId"})})
+ * @ORM\Entity
+ */
+class Userrepositories
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Repository
+     *
+     * @ORM\ManyToOne(targetEntity="Repository")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="RepositoryId", referencedColumnName="Id")
+     * })
+     */
+    private $repositoryid;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
+     * })
+     */
+    private $userid;
+
+
+}

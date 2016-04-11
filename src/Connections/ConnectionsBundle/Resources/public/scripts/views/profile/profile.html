@@ -1,0 +1,87 @@
+<div class="panel-body">
+    <div class="col-sm-3">
+        <div class="user-image user-data">
+            <img ng-src="{{user.Image}}" alt="profileImage">
+        </div>
+        <div class="user-username user-data">
+            {{ user.Username }}
+        </div>
+        <div class="user-name user-data">
+            {{ user.Name }}
+        </div>
+        <div class="user-company user-data">
+            <i class="fa fa-users"></i>
+            {{ user.Company || 'not set yet' }}
+        </div>
+        <div class="user-address user-data">
+            <i class="fa fa-map-marker"></i>
+            {{ user.Address || 'not set yet' }}
+        </div>
+        <div class="user-email user-data">
+            <i class="fa fa-envelope"></i>
+            {{ user.Email }}
+        </div>
+        <div class="user-blog user-data">
+            <i class="fa fa-link"></i>
+            {{ user.Blog || 'not set yet' }}
+        </div>
+        <div class="user-bio user-data">
+            {{ user.Bio || 'not set yet' }}
+        </div>
+        <div class=" user-data">
+            <div class="col-xs-4">
+                Followers
+            </div>
+            <div class="col-xs-4">
+                Following
+            </div>
+            <div class="col-xs-4">
+                Repositories
+            </div>
+            <div class="col-xs-4 user-stats">
+                {{ user.FollowersNumber > 999 ? (user.FollowersNumber/1000).toFixed(1) + 'k' : user.FollowersNumber }}
+            </div>
+            <div class="col-xs-4 user-stats">
+                {{ user.FollowingNumber > 999 ? (user.FollowingNumber/1000).toFixed(1) + 'k' : user.FollowingNumber }}
+            </div>
+            <div class="col-xs-4 user-stats">
+                {{ user.Repositories > 999 ? (user.Repositories/1000).toFixed(1) + 'k' : user.Repositories }}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="user-friends clearfix">
+            <h2>Direct Friends  &nbsp;<i ng-click="loadMore('direct');" style="cursor:pointer;" class="fa fa-plus"></i></h2>
+            <div ng-repeat="directFriend in directFriends">
+                <a href="#/profile/{{ directFriend.Id }}">
+                    {{ directFriend.Name }}
+                    <div class="friend-image">
+                        <img ng-src="{{ directFriend.Image }}" alt="profile Image" />
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="user-friends clearfix">
+            <h2>Friends Of Friends (Followings)  &nbsp;<i ng-click="loadMore('fof');" style="cursor:pointer;" class="fa fa-plus"></i></h2>
+            <div ng-repeat="friendOfFriend in friendsOfFriends">
+                <a href="#/profile/{{ friendOfFriend.Id }}">
+                    {{ friendOfFriend.Name }}
+                    <div class="friend-image">
+                        <img ng-src="{{ friendOfFriend.Image }}" alt="profile Image" />
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="user-friends clearfix" ng-show="showSuggested">
+            <h2>Suggested Friends &nbsp;<i ng-click="loadMore('suggested');" style="cursor:pointer;" class="fa fa-plus"></i></h2>
+            <div ng-repeat="suggestedFriend in suggestedFriends">
+                <a href="#/profile/{{ suggestedFriend.Id }}">
+                    {{ suggestedFriend.Name }}
+                    <div class="friend-image">
+                        <img ng-src="{{ suggestedFriend.Image }}" alt="profile Image" />
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

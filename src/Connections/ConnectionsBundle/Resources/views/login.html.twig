@@ -1,0 +1,65 @@
+{% extends '::base.html.twig' %}
+
+    {% block stylesheets %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        {% stylesheets
+        'bundles/connections/css/*'
+        filter="cssrewrite"
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+  {% block page_content %}
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-6 col-md-4 col-md-offset-4">
+                  {% if error %}
+                      <div class="login-error">{{ error }}</div>
+                  {% endif %}
+                  <div class="account-wall">
+                      <form  method="POST" action="{{ path('login_check') }}" class="form-signin">
+                          <input type="text" class="form-control" placeholder="Username" name="_username" required autofocus>
+                          <input type="password" class="form-control" placeholder="Password" name="_password" required>
+                          <input type="hidden" name="_target_path" value="{{ app.request.getSchemeAndHttpHost() ~ app.request.getBaseURL() }}" />
+                          <button class="btn btn-lg btn-primary btn-block login-connections" type="submit">
+                              Sign in</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <div class="row signup-form">
+              <div class="col-sm-6 col-md-4 col-md-offset-4">
+                  <button class="btn btn-primary sign-up-here-button" data-toggle="collapse" data-target="#signup">Sign up here</button>
+                  <div class="account-wall" >
+                      <form id="signup" method="POST" action="api/register" class="collapse form-signin">
+                          <input type="text" class="form-control" placeholder="Username" name="Username" required>
+                          <input type="password" class="form-control" placeholder="Password" name="Password" required>
+                          <input type="email" class="form-control" placeholder="Email" name="Email" required>
+                          <input type="text" class="form-control" placeholder="Name" name="Name" required>
+                          <input type="text" class="form-control" placeholder="Address" name="Address">
+                          <input type="text" class="form-control" placeholder="Company" name="Company">
+                          <input type="text" class="form-control" placeholder="Blog" name="Blog">
+                          <input type="text" class="form-control" placeholder="Bio" name="Bio">
+                          <input type="text" class="form-control" placeholder="Image link" name="Image" required>
+                          <button class="btn btn-lg btn-success btn-block signup-button" type="submit">Sign up</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endblock %}
+
+    {% block menu %}
+
+    {% endblock %}
+
+    {% block footer %}
+
+    {% endblock %}
+
+{% block javascript %}
+    {% block page_js %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,70 @@
+<?php
+
+namespace Connections\ConnectionsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Userdetails
+ *
+ * @ORM\Table(name="UserDetails")
+ * @ORM\Entity
+ */
+class Userdetails
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Address", type="string", length=45, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Company", type="string", length=45, nullable=true)
+     */
+    private $company;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Blog", type="string", length=200, nullable=true)
+     */
+    private $blog;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Bio", type="text", length=65535, nullable=true)
+     */
+    private $bio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Image", type="string", length=200, nullable=false)
+     */
+    private $image;
+
+    /**
+     * @var \User
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
+     * })
+     */
+    private $userid;
+
+
+}

@@ -1,0 +1,52 @@
+<?php
+
+namespace Connections\ConnectionsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Followers
+ *
+ * @ORM\Table(name="Followers", indexes={@ORM\Index(name="fk_Followers_User1_idx", columns={"FollowerId"}), @ORM\Index(name="fk_Followers_User2_idx", columns={"FollowingId"})})
+ * @ORM\Entity
+ */
+class Followers
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="IsDirect", type="boolean", nullable=false)
+     */
+    private $isdirect;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FollowerId", referencedColumnName="Id")
+     * })
+     */
+    private $followerid;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FollowingId", referencedColumnName="Id")
+     * })
+     */
+    private $followingid;
+
+
+}

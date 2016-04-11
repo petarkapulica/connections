@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+    {% block stylesheets %}
+
+        {% stylesheets
+            'bundles/connections/css/*'
+            filter="cssrewrite"
+
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+
+        {% block page_css %}{% endblock %}
+    {% endblock %}
+
+    {% block navbar %}
+        <header id="navbar">
+            <div id="navbar-container" class="boxed">
+                <div class="navbar-content clearfix">
+                    <ul class="nav navbar-top-links pull-right">
+                        <li id="dropdown-user" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle text-right header-menu">
+                                <span class="pull-left">
+                                    <img class="img-circle img-user media-object" src="{{ app.security.token.user.avatar.userid.avatar.image }}"
+                                         alt="Profile Picture">
+                                </span>
+                                <div class="username pull-left" ><span>Hello, {{ app.security.token.user.username }}</span> <i class="fa fa-chevron-down"></i></div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+                                <div class="pad-all text-center">
+                                    <a href="{{ logout_url('main') }}" class="btn btn-primary user-buttons logout-button">
+                                        <i class="fa fa-sign-out fa-fw"></i>Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    {% endblock %}
+
+  {% block page_content %}{% endblock %}
+
+    {% block menu %}
+        <nav id="mainnav-container">
+            <div id="mainnav">
+                <ul id="mainnav-menu" class="list-group">
+                    <li>
+                        <a href="#/profile">
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/connections">
+                            Connections
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+
+    {% block footer %}
+
+    {% endblock %}
+
+{% block javascript %}
+
+    {% javascripts
+        "bundles/connections/scripts/vendor/jquery-2.1.1.min.js"
+        "bundles/connections/scripts/vendor/angular.js"
+        "bundles/connections/scripts/vendor/angular-route.js"
+        "bundles/connections/scripts/vendor/bootstrap.min.js"
+        "bundles/connections/scripts/vendor/ui-bootstrap-0.14.2.js"
+        "bundles/connections/scripts/app.js"
+        "bundles/connections/scripts/controllers/*"
+        "bundles/connections/scripts/services/*"
+        filter='?uglifyjs2'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}" ></script>
+    {% endjavascripts %}
+
+
+    {% block page_js %}{% endblock %}
+{% endblock %}

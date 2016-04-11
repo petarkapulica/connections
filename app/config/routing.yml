@@ -1,0 +1,19 @@
+connections:
+    resource: "@ConnectionsBundle/Controller/"
+    type: annotation
+    prefix: /
+
+connections_registration_api:
+    type:     rest
+    resource: Connections\ConnectionsBundle\Controller\RegistrationController
+    prefix:   /api
+
+connections_user_details_api:
+    type:     rest
+    resource: Connections\ConnectionsBundle\Controller\ProfileController
+    prefix:   /api
+
+connections_connections_api:
+    type:     rest
+    resource: Connections\ConnectionsBundle\Controller\ConnectionsController
+    prefix:   /api

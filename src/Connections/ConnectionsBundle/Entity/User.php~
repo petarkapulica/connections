@@ -1,0 +1,56 @@
+<?php
+
+namespace Connections\ConnectionsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="User", indexes={@ORM\Index(name="fk_User_Role_idx", columns={"RoleId"})})
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Username", type="string", length=20, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Password", type="string", length=60, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Email", type="string", length=40, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var \Role
+     *
+     * @ORM\ManyToOne(targetEntity="Role")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="RoleId", referencedColumnName="Id")
+     * })
+     */
+    private $roleid;
+
+
+}
